@@ -13,6 +13,14 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  Restaurante restaurante0 = Restaurante(
+    name: 'Tacos Tavo',
+    picture: 'assets/images/tacostao-rest.png',
+    starRating: Rating(ratingValue: 5.0),
+    tags: ['Tacos', 'Enchiladas'],
+    preparationTime: '12',
+  );
+
   Restaurante restaurante1 = Restaurante(
     name: 'Mac Burger',
     picture: 'assets/images/mcburger-rest.png',
@@ -36,6 +44,29 @@ class _DashboardState extends State<Dashboard> {
     tags: ['Cortes', 'Asador', 'Tacos'],
     preparationTime: '40',
   );
+   Restaurante restaurante4 = Restaurante(
+    name: 'Cielito lindo',
+    picture: 'assets/images/boxitolindo-rest.png',
+    starRating: Rating(ratingValue: 2.7),
+    tags: ['Mole', 'Alitas', 'Nachos'],
+    preparationTime: '20',
+  );
+
+  Restaurante restaurante5= Restaurante(
+    name: 'Sushi Grill',
+    picture: 'assets/images/sushigrill-rest.png',
+    starRating: Rating(ratingValue: 4.2),
+    tags: ['Langosta', 'Camarón', 'Mojarra'],
+    preparationTime: '35',
+  );
+
+  Restaurante restaurante6 = Restaurante(
+    name: 'Burguer Queen',
+    picture: 'assets/images/burgerqueen-rest.jpg',
+    starRating: Rating(ratingValue: 4.8),
+    tags: ['Cortes', 'Asador', 'Tacos'],
+    preparationTime: '40',
+  );
   @override
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
@@ -44,10 +75,10 @@ class _DashboardState extends State<Dashboard> {
       body: Column(
         children: [
           Container(
-            height: 200.0,
+            height: 160.0,
             child: Padding(
               padding:
-                  const EdgeInsets.only(left: 20.0, right: 20.0, top: 40.0),
+                  const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -105,7 +136,7 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 20.0),
+                      vertical: 0.0, horizontal: 20.0),
                   child: Text(
                     'Populares cerca de ti',
                     style: TextStyle(
@@ -119,17 +150,159 @@ class _DashboardState extends State<Dashboard> {
           ),
           Container(
             //width: double.infinity,
-            height: 180.0,
+            height: 200.0,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
                 RestauranteCard(restaurante: restaurante1),
                 RestauranteCard(restaurante: restaurante2),
                 RestauranteCard(restaurante: restaurante3),
+                RestauranteCard(restaurante: restaurante0),
               ],
             ),
           ),
           Container(),
+
+          //Explorar categorias
+            Container(
+            constraints: BoxConstraints(minWidth: double.infinity),
+            decoration: BoxDecoration(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 0.0, horizontal: 20.0),
+                  child: Text(
+                    'Explorar categorias',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          Container(
+            padding: const EdgeInsets.fromLTRB(15.0, 00.0,10.0,30.0),
+            height: 200.0,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                  FlatButton(//comida rápida
+                      color: Colors.orangeAccent,
+                      textColor: Colors.white,
+                      disabledColor: Colors.grey,
+                      disabledTextColor: Colors.black,
+                      padding: EdgeInsets.all(20.0),
+                      splashColor: Colors.blueAccent,
+                      onPressed: () {/*...*/},
+                      child: Column( // Replace with a Row for horizontal icon + text
+                  children: <Widget>[
+                    Icon(
+                      Icons.fastfood,
+                      size: 70.0,
+                      ),
+                    Text("Rápida"),
+                    Text ('1548 Lugares')
+                  ],
+                ),
+                    ),
+                    FlatButton(
+                      color: Colors.deepPurple,
+                      textColor: Colors.white,
+                      disabledColor: Colors.grey,
+                      disabledTextColor: Colors.black,
+                      padding: EdgeInsets.all(20.0),
+                      splashColor: Colors.blueAccent,
+                      onPressed: () {/*...*/},
+                      child: Column( // Replace with a Row for horizontal icon + text
+                  children: <Widget>[
+                    Icon(
+                      Icons.local_florist,
+                      size: 70.0,
+                      ),
+                    Text("Ensaladas"),
+                    Text ('80 Lugares')
+                  ],
+                ),
+                    ),
+                    FlatButton(//postres
+                      color: Colors.green,
+                      textColor: Colors.white,
+                      disabledColor: Colors.grey,
+                      disabledTextColor: Colors.black,
+                      padding: EdgeInsets.all(20.0),
+                      splashColor: Colors.blueAccent,
+                      onPressed: () {/*...*/},
+                      child: Column( // Replace with a Row for horizontal icon + text
+                  children: <Widget>[
+                    Icon(
+                      Icons.hot_tub,
+                      size: 70.0,
+                      ),
+                    Text("Postres"),
+                    Text ('43 Lugares')
+                  ],
+                ),
+                    ),
+                    FlatButton(//postres
+                      color: Colors.red,
+                      textColor: Colors.white,
+                      disabledColor: Colors.grey,
+                      disabledTextColor: Colors.black,
+                      padding: EdgeInsets.all(20.0),
+                      splashColor: Colors.blueAccent,
+                      onPressed: () {/*...*/},
+                      child: Column( // Replace with a Row for horizontal icon + text
+                  children: <Widget>[
+                    Icon(
+                      Icons.set_meal,
+                      size: 70.0,
+                      ),
+                    Text("Mariscos"),
+                    Text ('21 Lugares')
+                  ],
+                ),
+                    ),
+              ],
+            ),
+          ),
+          
+           Container(
+            constraints: BoxConstraints(minWidth: double.infinity),
+            decoration: BoxDecoration(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 0.0, horizontal: 20.0),
+                  child: Text(
+                    'Recomendados',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+            Container(
+            height: 190.0,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                RestauranteCard(restaurante: restaurante5),
+                RestauranteCard(restaurante: restaurante4),
+                RestauranteCard(restaurante: restaurante6),
+              ],
+            ),
+          ),
         ],
       ),
     );
